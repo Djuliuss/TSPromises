@@ -11,13 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const dodgyPromise = () => __awaiter(void 0, void 0, void 0, function* () {
     return Math.random() > 0.5 ? Promise.resolve("I am resolved") : Promise.reject("I am rejected");
 });
-const main = () => {
-    dodgyPromise()
-        .then(result => {
-        console.info(`Result dodgyPromise: ${result}`);
-    })
-        .catch(result => {
-        console.info(`Result dodgyPromise: ${result}`);
-    });
-};
+const main = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.info(`Result dodgyPromise: ${yield dodgyPromise()}`);
+    }
+    catch (e) {
+        console.info(`Result dodgyPromise: ${e}`);
+    }
+});
 main();
